@@ -1,0 +1,41 @@
+
+
+.navbar-brand {
+    font-family: nytimes;
+    font-size: 30px;
+    color: rgb(22, 22, 23);
+    
+}
+
+#scrape {
+    background-color: red;
+    margin-right: 10px;
+    color: white;
+    margin: center;
+}
+
+#clear {
+    background-color: red;
+    color: white;
+}
+
+#homeLink {
+    float: left;
+}
+
+.intro {
+    text-align: center;
+    font-family: nytimes;
+}
+
+.masthead {
+    background-image: url("../images/sportsimage.jpg");
+    
+
+    
+}
+ body {
+    background-image: url("../images/sportsimage.jpg");
+    
+
+ }

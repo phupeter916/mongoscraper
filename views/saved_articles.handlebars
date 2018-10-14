@@ -1,0 +1,80 @@
+<doctype html>
+
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="mainNavBar">
+  <a class="navbar-brand" href="#">ESPN Scraper</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ml-auto">
+                <li class="nav-item">
+                   <a class="nav-link" id="homeLink" href="/">HOME</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" id="savedLink" href="/saved_articles">SAVED ARTICLES</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn nav-link" id="scrape">SCRAPE ARTICLES</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn nav-link" id="clear">CLEAR ARTICLES</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<header class="masthead">
+    <div class="container-fluid">
+        <div class="intro">
+            <h1>ESPN Sports</h1>
+            <h2>Saved Articles</h2>
+        </div>
+    </div>
+</header>
+
+<section container id="articles" style="height: 100vh">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            {{#if articles}} {{#each articles}}
+            <div class="card bg-light border-dark mb-3" id="articleCard">
+                <div class="card-header border-dark">{{title}}</div>
+                <div class="card-body text-dark">
+                    <a href={{link}} target="_blank">{{link}}</a>
+                    <p class="card-text">{{summary}}</p>
+                    {{#if saved}}
+                    <button class="btn delete" data-id={{this._id}} >Delete Article</button>
+
+                    <button type="button" class="btn notes" data-id={{this._id}}>Add/View Notes</button>
+                    {{/if}}
+                </div>
+            </div>
+            {{/each}} {{else}}
+            <div class="card bg-light border-dark mb-3" id="noSavedArticles">
+                <div class="card-body text-dark">
+                    <h4>There are no articles saved.</h4>
+                </div>
+            </div>
+            {{/if}}
+
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</doctype>
