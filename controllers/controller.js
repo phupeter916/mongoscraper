@@ -17,26 +17,6 @@ module.exports = function (app) {
         res.render("home");
     });
 
-// Route for saving/updating an Article's associated Note
-app.post("/save_articles/:id", function(req, res) {
-  
-  // save the new note that gets posted to the Notes collection
-  db.Note.create(req.body)
-  // then find an article from the req.params.id
-  .then(function(dbNote) {
-
-  // and update it's "note" property with the _id of the new note
-  return db.Article.findOneAndUpdate({ _id: req.params.id }, {
-  note: dbNote._id }, { new: true });
-  })
-  .then(function(dbArticle) {
-    res.render(("view_articles"), { articles: DbArticles })
-      })
-  .catch(function(err) {
-    res.json(err);
-  });
-
-});
 
     // route for saved_articles
 app.get("/saved_articles", function (req, res) {
@@ -48,19 +28,6 @@ app.get("/saved_articles", function (req, res) {
       })
 });
 
-// Delete a saved article
-app.post("/delete_article/:id", function (req, res) {
-  // Use the article id to find and update its saved boolean
-  db.Article.update({ "_id": req.params.id }, { "saved": false, "note": [] })
-      .then(function (DbArticles) {
-          console.log(DbArticles)
-          res.render(("view_articles"), { articles: DbArticles })
-      })
-      .catch(function (err) {
-          // db.find error
-          console.log(err);
-      })
-});
 
 //route for view_articles
 app.get("/view_articles", function (req, res) {
@@ -85,6 +52,41 @@ app.get("/articles", function(req, res) {
       // If an error occurred, send it to the client
       res.json(err);
     });
+});
+
+// Delete a saved article
+app.post("/delete_article/:id", function (req, res) {
+  // Use the article id to find and update its saved boolean
+  db.Article.update({ "_id": req.params.id }, { "saved": false, "note": [] })
+      .then(function (DbArticles) {
+          console.log(DbArticles)
+          res.render(("view_articles"), { articles: DbArticles })
+      })
+      .catch(function (err) {
+          // db.find error
+          console.log(err);
+      })
+});
+
+// Route for saving/updating an Article's associated Note
+app.post("/save_articles/:id", function(req, res) {
+  
+  // save the new note that gets posted to the Notes collection
+  db.Note.create(req.body)
+  // then find an article from the req.params.id
+  .then(function(dbNote) {
+
+  // and update it's "note" property with the _id of the new note
+  return db.Article.findOneAndUpdate({ _id: req.params.id }, {
+  note: dbNote._id }, { new: true });
+  })
+  .then(function(dbArticle) {
+    res.render(("view_articles"), { articles: DbArticles })
+      })
+  .catch(function(err) {
+    res.json(err);
+  });
+
 });
 
 // Route for saving/updating an Article's associated Note

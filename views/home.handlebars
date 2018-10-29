@@ -15,7 +15,7 @@
                 <li class="nav-item">
                    <a class="nav-link" id="homeLink" href="/">HOME</a></li>
                 <li class="nav-item">
-                    <a class="nav-link" id="savedLink" href="/saved_articles">SAVED ARTICLES</a>
+                    <a class="nav-link" id="savedLink" href="/view_articles">VIEW ARTICLES</a>
                 </li>
                 <li class="nav-item">
                     <button class="btn nav-link" id="scrape">SCRAPE ARTICLES</button>
@@ -38,38 +38,48 @@
     </div>
 </header>
 
-<section container id="articles">
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            {{#if articles}} {{#each articles}}
-            <div class="card bg-light border-dark mb-3" id="articleCard">
-                <div class="card-header border-dark">{{title}}</div>
-                <div class="card-body text-dark">
-                    <a href={{link}} target="_blank">{{link}}</a>
-                    <p class="card-text">{{summary}}</p>
-                    {{#unless saved}}<button class="btn save" style="border: solid 1px green" data-id={{this._id}}>Save Article</button>
-                    {{/unless}}
-                    {{#if saved}}
-                    <button class="btn delete" style="border: solid 1px" data-id={{this._id}}>Delete Article</button>
-                     <button class="btn notes" style="border: solid 1px" data-id={{this._id}}>Add A Note</button>
-                        {{#if note}}
-                        <button class="btn deleteNote" style="border: solid 1px" data-id={{this._id}}>Delete Note</button>
-                        {{/if}}
-                    {{/if}}
-                </div>
-            </div>
-            {{/each}} {{else}}
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h4>There are no articles.</h4>
-                </div>
-            </div>
-            {{/if}}
-        </div>
-        <div class="col-md-1"></div>
+<style>
+      body { background-color: white; }
+      #wrapper {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 5%;
+      }
+      #articles {
+        display: inline-block;
+        overflow: auto;
+        width: 60%;
+        height: 700px;
+      }
+      #notes {
+        float: right;
+        width: 30%;
+      }
+      textarea, input {
+        display: block;
+        width: 100%;
+        background-color: #FCF5C7;
+      }
+      input {
+        height: 36px;
+        font-size: 24px;
+      }
+      textarea {
+        height: 200px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="articles"></div>
+      <div id="notes"></div>
     </div>
-</section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
 
 
     
