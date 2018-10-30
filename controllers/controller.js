@@ -109,6 +109,14 @@ app.post("/saved_articles/:id", function(req, res) {
     });
 });
 
+// Delete note
+app.delete('/delete_note/:id', function (req, res) {
+  db.Note
+      .findByIdAndDelete(req.params.id)
+      .then(result => res.json(result))
+      .catch(err => res.json(err));
+});
+
 // Routes
 
 // A GET route for scraping the NYTimes website
