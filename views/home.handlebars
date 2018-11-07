@@ -32,14 +32,35 @@
 <header class="masthead">
     <div class="container-fluid">
         <div class="intro">
-            <h1>ESPN Sports</h1>
-            <h2>Mongo DB Scraper</h2>
+            <h1 id="homepageTitle">ESPN Sports</h1>
+            <h2 id="homepageTitle2">Mongo DB Scraper</h2>
+            <hr/>
         </div>
     </div>
 </header>
 
 <style>
-      body { background-color: white; }
+      body { 
+        background-color: lightgray; 
+        margin left: 20px;
+
+      }
+      hr {
+        height: 10px;
+      }
+      
+
+      #homepageTitle {
+        color: black;
+        font-size: 100px;
+      }
+
+      #homepageTitle2 {
+        color: black;
+        font-size: 100px;
+      }
+     
+      
       #wrapper {
         width: 960px;
         margin-left: auto;
@@ -51,6 +72,7 @@
         overflow: auto;
         width: 60%;
         height: 700px;
+        
       }
       #notes {
         float: right;
@@ -72,12 +94,17 @@
     </style>
   </head>
   <body>
+
+  
+
     <div id="wrapper">
       <div id="articles"></div>
       <div id="notes"></div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="app.js"></script>
+
+    
+    
+    
   </body>
 </html>
 

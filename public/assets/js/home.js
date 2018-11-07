@@ -3,13 +3,14 @@
 
     // Handle Scrape button
     $("#scrape").on("click", function () {
-      $.getJSON("/articles", function(data) {
-        // For each one
-        for (var i = 0; i < data.length; i++) {
-          // Display the apropos information on the page
-          $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-        }
-      });
+      // Grab the articles as a json
+    $.getJSON("/articles", function(data) {
+    // For each one
+    for (var i = 0; i < data.length; i++) {
+    // Display the apropos information on the page
+    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+  }
+});
   });
   
 
@@ -18,17 +19,10 @@
 });
 
 
-  // Clear Article Button
-  $("#clear-articles").on("click", function () {
-    console.log("clicked");
-    $("#articles").empty();
-});
-
 
 
 // Whenever someone clicks a p tag
 $(document).on("click", "p", function() {
-    alert("This worked");
     // Empty the notes from the note section
     $("#notes").empty();
     // Save the id from the p tag
