@@ -14,6 +14,7 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 var request = require('request');
 
+
 // Require all models
 var db = require("./models");
 
@@ -22,6 +23,7 @@ var PORT = process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();
+//app.use(express.bodyParser());
 
 // handlebars route to static files - css, img
 app.use(express.static('public'));
