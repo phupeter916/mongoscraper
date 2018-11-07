@@ -69,7 +69,7 @@ $(document).on("click", "#savenote", function() {
       title: $("#titleinput").val(),
       // Value taken from note textarea
       body: $("#bodyinput").val(),
-      id: $(this).attr("data-id")
+      id: thisId
     }
   })
     // With that done
